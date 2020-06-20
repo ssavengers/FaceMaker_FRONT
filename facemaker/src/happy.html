@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HAPPY FACE</title>
     <link rel="stylesheet" href="../css/photo.css">
     <link rel="stylesheet" href="../css/loader.css">
 </head>
@@ -14,11 +14,44 @@
         window.onload = function () {
             $('.lds-facebook').hide();
             $('.layer').hide();
+
+            $("#uploadImg").change(function () {
+                readUploadImage(this);
+            });
+
+            // $("#previewImg").change(function () {
+            //     alert("YOU LOOK SO HAPPY!");
+            //     window.open('sad.html', '_self')
+            // })
         }
 
-        function takePhoto() {
-            alert("!");
+        function readUploadImage( inputObject ) {
+            if ( window.File && window.FileReader ) {
+                if ( inputObject.files && inputObject.files[0]) {
+                    if ( !(/image/i).test(inputObject.files[0].type ) ){
+                        alert("이미지 파일을 선택해 주세요!");
+                        return false;
+                    }
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#previewImg').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(inputObject.files[0]);
+                    $('#nextBtn').show();
+                }
+            } else {
+                alert( "미리보기 안되요.~ 브라우저를 업그레이드하세요~");
+            }
         }
+
+        function next() {
+            alert("Did I tell you have a nice smile?");
+            window.open('sad.html', '_self');
+        }
+
+        // function takePhoto() {
+        //     alert("!");
+        // }
     </script>
     <div class="lds-facebook"><div></div><div></div><div></div></div>
     <div class="layer"></div>
@@ -30,13 +63,13 @@
         <img src="../image/faces/happy.png">
     </div>
     <div class="panel image">
-        <img src="">
+        <img id="previewImg" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
         <input type="file" multiple id="photo_upload" style="visibility: hidden;">
     </div>
     <div class="panel btn">
-        <div>
-            <button onclick="takePhoto()">GO</button>
-        </div>
+        <label for="uploadImg">Upload</label>
+        <input type="file" id="uploadImg">
+        <button id="nextBtn" onclick="next()" style="display:none;">NEXT</button>
     </div>
 </body>
 </html>

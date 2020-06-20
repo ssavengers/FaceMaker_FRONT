@@ -47,14 +47,14 @@ h1 {
 .panel.image {
     position: absolute;
     left: 0;
-    display: flex;
-    justify-content: center;
     width: 100%;
     height: 60%;
     padding: 10px;
 }
 
-.panel.image img {
+#previewImg {
+    margin-left: 15%;
+    margin-right: auto;
     height: 100%;
     width: 70%;
 }
@@ -65,19 +65,40 @@ h1 {
     height: 10%;
     position: fixed;
     bottom: 0px;
+    text-align: center;
     /* margin-top: 20%; */
 }
 
-.panel.btn div {
-    text-align: center;
+/* btn css */
+
+.panel.btn label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
 }
 
+.panel.btn input[type="file"] {  /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+  }
 
-/* btn css */
-.panel.btn div button {
-    /* padding: 8px 4px;
-    margin: 5px 5px auto; */
-    background-color: #555555; /* Green */
+
+.panel.btn button {
+    background-color: #555555;
     border: none;
     border-radius: 5px;
     color: white;
@@ -88,7 +109,7 @@ h1 {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
 
@@ -98,4 +119,4 @@ h1 {
 
 .panel.btn button:focus {
     outline: none;
-}
+} 

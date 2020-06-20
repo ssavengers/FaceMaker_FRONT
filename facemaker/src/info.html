@@ -41,13 +41,15 @@
             $.cookie('age', age);
 
             $.ajax({
-                    url: "https://7d8d9e82036f.ngrok.io/face/login/" + name + "/" + age,
-                    contentType: "application/json",
-                    dataType: 'json',
-                    success: function(result){
-                        alert("LETS GO");
-                    }
-                });
+                url: "https://7d8d9e82036f.ngrok.io/face/login/" + name + "/" + age,
+                contentType: "application/json",
+                dataType: 'json',
+                success: function(result){
+                    alert("LETS GO");
+                    // window.open('happy.html');
+                }
+            });
+            window.open('happy.html', '_self');
         }
 
         function isNumeric (data) {
