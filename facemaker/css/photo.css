@@ -1,0 +1,101 @@
+/* body */
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 107, 6);
+    overflow: hidden;
+}
+
+
+/* panel logo */
+
+.panel.logo {
+    display: flex;
+    justify-content: center;
+    margin: 5% 0px auto;
+    width: 100%;
+    height: 5%;
+}
+
+.panel.logo img {
+    height: 100%;
+}
+
+/* panel desc */
+
+.panel.desc {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 5%;
+    margin: 5% 0px auto;
+}
+
+h1 {
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.panel.desc img {
+    height: 30px;
+}
+
+/* panel image */
+.panel.image {
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60%;
+    padding: 10px;
+}
+
+.panel.image img {
+    height: 100%;
+    width: 70%;
+}
+
+/* panel btn */
+.panel.btn {
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    bottom: 0px;
+    /* margin-top: 20%; */
+}
+
+.panel.btn div {
+    text-align: center;
+}
+
+
+/* btn css */
+.panel.btn div button {
+    /* padding: 8px 4px;
+    margin: 5px 5px auto; */
+    background-color: #555555; /* Green */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.panel.btn button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.panel.btn button:focus {
+    outline: none;
+}

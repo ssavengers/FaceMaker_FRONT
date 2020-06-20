@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+        border : black 1px solid;
+        border-radius: 5px;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <script>
+        window.onload = function () {
+            $('#loadButton').click(function(){
+                alert("!!");
+            })
+        }
+    </script>
+    THIS IS TEST
+    <div class="camera">
+        <video id="video">Video stream not available.</video>
+    </div>
+    <canvas id="canvas" width="600" height="600"></canvas>
+<input id="loadButton" type="file" accept="image/*">
+</body>
+</html>

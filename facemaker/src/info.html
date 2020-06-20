@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FACE MAKER</title>
+    <link rel="stylesheet" href="../css/info.css">
+    <link rel="stylesheet" href="../css/loader.css">
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+        window.onload = function () {
+            /* loading window */
+            $('.lds-facebook').hide();
+            $('.layer').hide();
+            /* loading window end */
+            var name = $.cookie('name');
+            var age = $.cookie('age');
+            $('#name').val(name);
+            $('#age').val(age);
+        }
+        function start () {
+            var name = $('#name').val();
+            var age = $('#age').val();
+            if(name == '' || age == '') {
+                alert('FILL UP THE FORM!');
+                return;
+            }
+            if(!isNumeric(age)) {
+                $('#age').val('');
+                alert('YOUR AGE IS INVALID! SORRY')
+                return;
+            } else if(age < 0 || age > 150) {
+                $('#age').val('');
+                alert('YOUR AGE SEEMS WRONG..')
+                return;
+            }
+            $.cookie('name', name);
+            $.cookie('age', age);
+
+            $.ajax({
+                    url: "https://7d8d9e82036f.ngrok.io/face/login/" + name + "/" + age,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    success: function(result){
+                        alert("LETS GO");
+                    }
+                });
+        }
+
+        function isNumeric (data) {
+            return !isNaN(data);
+        }
+
+
+    </script>
+    <div class="lds-facebook"><div></div><div></div><div></div></div>
+    <div class="layer"></div>
+    <div class="panel logo">
+        <img src="../image/sub_logo.png">
+    </div>
+    <div class="panel icons">
+        <table class="table four">
+            <tr>
+                <td><img src="../image/faces/happy.png"></td>
+                <td></td>
+                <td><img src="../image/faces/angry.png"></td>
+                <td></td>
+                <td><img src="../image/faces/sad.png"></td>
+                <td></td>
+                <td><img src="../image/faces/neutral.png"></td>
+            </tr>
+        </table>
+        <table class="table three">
+            <tr>
+                <td><img src="../image/faces/surprised.png"></td>
+                <td></td>
+                <td><img src="../image/faces/fear.png"></td>
+                <td></td>
+                <td><img src="../image/faces/contempt.png"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel input">
+        <h1>WHAT IS YOUR NAME?</h1>
+        <input id="name" required="required">
+    </div>
+    <div class="panel input">
+        <h1>HOW OLD ARE YOU?</h1>
+        <input id="age" required="required">
+    </div>
+    <div class="panel btn">
+        <div>
+            <button onclick="start()">START</button>
+        </div>
+    </div>
+</body>
+</html>

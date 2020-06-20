@@ -1,0 +1,54 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 107, 6);
+    overflow: hidden;
+}
+
+.panel.logo {
+    width: 100%;
+    height: 20%;
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+}
+
+.panel.logo img {
+    height: 100%;
+}
+
+.panel.btn {
+    width: 100%;
+    height: 20%;
+    margin-top: 60%;
+}
+
+.panel.btn div {
+    text-align: center;
+}
+
+.panel.btn div button {
+    /* padding: 8px 4px;
+    margin: 5px 5px auto; */
+    background-color: #555555; /* Green */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.panel.btn button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.panel.btn button:focus {
+    outline: none;
+}

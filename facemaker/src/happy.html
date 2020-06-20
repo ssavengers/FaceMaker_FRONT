@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/photo.css">
+    <link rel="stylesheet" href="../css/loader.css">
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+        window.onload = function () {
+            $('.lds-facebook').hide();
+            $('.layer').hide();
+        }
+
+        function takePhoto() {
+            alert("!");
+        }
+    </script>
+    <div class="lds-facebook"><div></div><div></div><div></div></div>
+    <div class="layer"></div>
+    <div class="panel logo">
+        <img src="../image/sub_logo.png">
+    </div>
+    <div class="panel desc">
+        <h1>SHOW ME YOUR HAPPY FACE!</h1>
+        <img src="../image/faces/happy.png">
+    </div>
+    <div class="panel image">
+        <img src="">
+        <input type="file" multiple id="photo_upload" style="visibility: hidden;">
+    </div>
+    <div class="panel btn">
+        <div>
+            <button onclick="takePhoto()">GO</button>
+        </div>
+    </div>
+</body>
+</html>

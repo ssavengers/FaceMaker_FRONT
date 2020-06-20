@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function capture() {
+        var canvas = document.getElementById('canvas');     
+        var video = document.getElementById('video');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+    
+        /** Code to merge image **/
+        /** For instance, if I want to merge a play image on center of existing image **/
+        const playImage = new Image();
+        playImage.src = 'path to image asset';
+        playImage.onload = () => {
+        const startX = (video.videoWidth / 2) - (playImage.width / 2);
+        const startY = (video.videoHeight / 2) - (playImage.height / 2);
+        canvas.getContext('2d').drawImage(playImage, startX, startY, playImage.width, playImage.height);
+        // canvas.toBlob() = (blob) => {
+        //     const img = new Image();
+        //     console.log(blob);
+        //     console.log("!!!")
+        //     img.src = window.URL.createObjectUrl(blob);
+        //     console.log(img.src);
+        // };
+        };
+    /** End **/
+}
+    </script>
+    <video id="video" src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" controls></video>
+    <button onclick="capture()">Capture</button>
+    <canvas id="canvas" style="overflow:auto"></canvas>
+    </body>
+</html>

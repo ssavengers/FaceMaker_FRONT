@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=320; user-scalable=no" /> 
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
+    <title>Camera</title> 
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+</head> 
+<body> 
+    <script> 
+        $(document).ready(function(){ 
+            if (!('url' in window) && ('webkitURL' in window)) { 
+                window.URL = window.webkitURL; 
+            } 
+            $('#camera').change(function(e){ 
+                $('#pic').attr('src', URL.createObjectURL(e.target.files[0]));
+                console.log(URL.createObjectURL(e.target.files[0]))
+                //rotateImage(e.target.files[0]);
+            }); 
+    
+    
+            function rotateImage(e) { 
+                var files = e.target.files; 
+                var fileType = files[0].type; 
+                loadImage(files[0], function (img, data) { 
+                    img.toBlob(function (blob) { 
+                    var rotateFile = new File([blob], files[0].name, { type: fileType }); 
+                    sel_file = rotateFile; 
+                    var reader = new FileReader(); 
+                    reader.onload = function (e) { 
+                        console.log(e.target.result);
+                        $("#pic").attr("src", e.target.result); 
+                    } 
+                    reader.readAsDataURL(rotateFile); 
+                    }
+                , fileType) }, 
+                { orientation: true });//end loadImage }
+            };
+        });
+    
+    
+    
+    
+    </script> 
+    <input type="file" id="camera" name="camera" capture="camera" accept="image/*" />  
+    <input type="image" id="camera" name="camera" capture="camera" accept="*" /> 
+    <br> 
+    <img id="pic" style="width:100%;" /> 
+</body> 
+</html>
