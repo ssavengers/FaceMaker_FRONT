@@ -4,8 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAD FACE</title>
+    <link rel="stylesheet" href="../css/photo.css">
+    <link rel="stylesheet" href="../css/loader.css">
 </head>
 <body>
-    <h1>HELLO</h1>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+        window.onload = function () {
+            $('.lds-facebook').hide();
+            $('.layer').hide();
+
+            $("#uploadImg").change(function () {
+                readUploadImage(this);
+            });
+
+            // $("#previewImg").change(function () {
+            //     alert("YOU LOOK SO HAPPY!");
+            //     window.open('sad.html', '_self')
+            // })
+        }
+
+        function readUploadImage( inputObject ) {
+            if ( window.File && window.FileReader ) {
+                if ( inputObject.files && inputObject.files[0]) {
+                    if ( !(/image/i).test(inputObject.files[0].type ) ){
+                        alert("이미지 파일을 선택해 주세요!");
+                        return false;
+                    }
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#previewImg').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(inputObject.files[0]);
+                    $('#nextBtn').show();
+                }
+            } else {
+                alert( "미리보기 안되요.~ 브라우저를 업그레이드하세요~");
+            }
+        }
+
+        function next() {
+            $('.layer').show();
+            alert("Did I tell you have a nice smile?");
+            window.open('sad.html', '_self');
+        }
+
+        // function takePhoto() {
+        //     alert("!");
+        // }
+    </script>
+    <div class="lds-facebook"><div></div><div></div><div></div></div>
+    <div class="layer"></div>
+    <div class="panel logo">
+        <img src="../image/sub_logo.png">
+    </div>
+    <div class="panel desc">
+        <h1>SHOW ME YOUR SAD FACE!</h1>
+        <img src="../image/faces/sad.png">
+    </div>
+    <div class="panel image">
+        <img id="previewImg" src="https://s1.r29static.com/bin/entry/24e/0,0,460,552/720x864,85/1368215/image.webp">
+        <input type="file" multiple id="photo_upload" style="visibility: hidden;">
+    </div>
+    <div class="panel btn">
+        <label for="uploadImg">Upload</label>
+        <input type="file" id="uploadImg">
+        <button id="nextBtn" onclick="next()" style="display:none;">NEXT</button>
+    </div>
 </body>
 </html>
