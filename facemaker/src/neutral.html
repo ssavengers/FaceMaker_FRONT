@@ -12,17 +12,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script>
         window.onload = function () {
+            console.log($.cookie('name'))
             $('.lds-facebook').hide();
             $('.layer').hide();
 
             $("#uploadImg").change(function () {
                 readUploadImage(this);
             });
-
-            // $("#previewImg").change(function () {
-            //     alert("YOU LOOK SO HAPPY!");
-            //     window.open('sad.html', '_self')
-            // })
         }
 
         function readUploadImage( inputObject ) {
@@ -45,14 +41,34 @@
         }
 
         function next() {
-            $('.layer').show();
-            alert("Make many expressions");
-            window.open('happy.html', '_self');
+            uploadFile();
         }
 
-        // function takePhoto() {
-        //     alert("!");
-        // }
+        function uploadFile() {
+            var formData = new FormData($('#form')[0]);
+
+            var formData = new FormData();
+            formData.append('mFile', $('#uploadImg')[0].files[0]);
+
+            $.ajax({
+                url: 'https://3752707291dd.ngrok.io/face/file/upload/' + $.cookie('name') + '/1',
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success : function () {
+                    $('.layer').show();
+                     alert("Recent news are making us faceless...");
+                     window.open('happy.html', '_self');
+                }, fail : function () {
+                    $('.layer').show();
+                    alert("PROBLEM HAPPENED..")
+                    $('.layer').hide();
+                }, complete : function() {
+                    window.open('happy.html', '_self')
+                }
+            })
+        }
     </script>
     <div class="lds-facebook"><div></div><div></div><div></div></div>
     <div class="layer"></div>
@@ -65,11 +81,13 @@
     </div>
     <div class="panel image">
         <img id="previewImg" src="https://s3.r29static.com/bin/entry/ed7/426x641,85/1560860/image.webp">
-        <input type="file" multiple id="photo_upload" style="visibility: hidden;">
+        <input type="file" id="photo_upload" style="visibility: hidden;">
     </div>
     <div class="panel btn">
-        <label for="uploadImg">Upload</label>
-        <input type="file" id="uploadImg">
+        <form id="form" target="_self" style="margin-top: auto; margin-bottom: auto;">
+            <label for="uploadImg">Upload</label>
+            <input type="file" id="uploadImg">
+        </form>
         <button id="nextBtn" onclick="next()" style="display:none;">NEXT</button>
     </div>
 </body>

@@ -57,6 +57,7 @@ h1 {
     margin-right: auto;
     /* height: 100%; */
     width: 70%;
+    border-radius: 5px;
 }
 
 /* panel btn */
@@ -66,6 +67,9 @@ h1 {
     position: fixed;
     bottom: 0px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
     /* margin-top: 20%; */
 }
 
@@ -75,6 +79,7 @@ h1 {
     display: inline-block;
     padding: .5em .75em;
     color: #999;
+    padding: 15px 32px;
     font-size: inherit;
     line-height: normal;
     vertical-align: middle;
@@ -107,7 +112,7 @@ h1 {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 4px 15px;
     cursor: pointer;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;

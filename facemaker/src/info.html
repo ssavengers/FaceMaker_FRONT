@@ -39,18 +39,26 @@
             }
             $.cookie('name', name);
             $.cookie('age', age);
-
+            alert(name);
+            alert(age);
+            console.log(name + age);
             $.ajax({
-                url: "https://7d8d9e82036f.ngrok.io/face/login/" + name + "/" + age,
+                url: "https://3752707291dd.ngrok.io/face/login/" + name + "/" + age,
                 contentType: "application/json",
                 dataType: 'json',
                 success: function(result){
                     alert("LETS GO");
+                    window.open('neutral.html', '_self');
                     // window.open('happy.html');
+                }, fail : function(result) { 
+                    alert("!!!")
+                }, complete : function(result) {
+                    window.open('neutral.html', '_self');
                 }
             });
-            window.open('neutral.html', '_self');
+            
         }
+
 
         function isNumeric (data) {
             return !isNaN(data);

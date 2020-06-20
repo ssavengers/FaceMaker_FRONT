@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/result.css">
+    <link rel="stylesheet" href="../css/loader.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <div class="lds-facebook"><div></div><div></div><div></div></div>
+    <div class="layer"></div>
+    <div class="score_modal">
+        <h1 style="color: black;">YOUR SCORE IS</h1>
+        <h1 style="color: black;" id="user_score">95</h1>
+        <table>
+            <tr>
+                <td>YOUR ESTIMAED AGE</td>
+                <td id="estimated_age">13</td>
+            </tr>
+            <tr>
+                <td>YOUR AGE</td>
+                <td id="user_age">14</td>
+            </tr>
+            <tr>
+                <td>NEUTRAL</td>
+                <td id="neutral_score">80</td>
+            </tr>
+            <tr>
+                <td>HAPPY</td>
+                <td id="happy_score">70</td>
+            </tr>
+            <tr>
+                <td>SAD</td>
+                <td id="sad_score">60</td>
+            </tr>
+            <tr>
+                <td>ANGRY</td>
+                <td id="angry_score">50</td>
+            </tr>
+            <tr>
+                <td>CONTEMPT</td>
+                <td id="contempt_score">50</td>
+            </tr>
+            <tr>
+                <td>SURPRISE</td>
+                <td id="surprise_score">70</td>
+            </tr>
+            <tr>
+                <td>FEAR</td>
+                <td id="fear_score">30</td>
+            </tr>
+        </table>
+        <div class="modal btn">
+            <button id="closeBtn" onclick="close()">CLOSE</button>
+            <button id="menuBtn">MENU</button>
+            <button id="retryBtn">RETRY</button>
+        </div>
+    </div>
+    <div class="panel fixed logo">
+        <img src="../image/main_logo.png">
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div>
+                    <img class="face" src="../image/faces/neutral.png">
+                    <h1>YOUR NEUTRAL FACE!</h1>
+                </div>
+                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+            </div>
+            <div class="swiper-slide">
+                <div>
+                    <img class="face" src="../image/faces/happy.png">
+                    <h1>YOUR HAPPY FACE^^</h1>
+                </div>
+                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+            </div>
+            <div class="swiper-slide">
+                <div>
+                    <img class="face" src="../image/faces/sad.png">
+                    <h1>YOUR SAD FACE..</h1>
+                </div>
+                
+                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+            </div>
+            <div class="swiper-slide">
+                <div>
+                    <img class="face" src="../image/faces/angry.png">
+                    <h1>YOUR ANGRY FACE!!</h1>
+                </div>                
+                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+            </div>
+            <div class="swiper-slide">
+                <div>
+                    <img class="face" src="../image/faces/contempt.png">
+                    <h1>YOUR CONTEMPT FACE~</h1>
+                </div>
+                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+            </div>
+            <div class="swiper-slide">
+                <div>
+                    <img class="face" src="../image/faces/surprised.png">
+                    <h1>YOUR SURPRISED FACE!!</h1>
+                </div>                
+                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+            </div>
+            <div class="swiper-slide">
+                <div>
+                    <img class="face" src="../image/faces/fear.png">
+                    <h1>YOUR FEAR FACE...BOO!</h1>
+                </div>
+                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="panel btn">
+        <div>
+            <button onclick="score()">SCORE</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+
+        window.onload = function () {
+            /* loading window */
+            $('.lds-facebook').hide();
+            $('.layer').hide();
+            /* loading window end */
+        }
+        
+        function score () {
+            $('.score_modal').show();
+            $('.layer').show();
+        }
+
+        $(document).ready(function () {
+            $('#closeBtn').on('click', function () {
+                $('.score_modal').hide();
+                $('.layer').hide();
+            })
+
+            $('#menuBtn').on('click', function () {
+                window.open('../index.html', '_self');
+            })
+
+            $('#retryBtn').on('click', function () {
+                window.open('info.html', '_self');
+            })
+        });
+    </script>
+</body>
+</html>

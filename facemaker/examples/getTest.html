@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        window.onload = function () {
+            
+        }
+        $.ajaxTransport("+binary", function(options, originalOptions, jqXHR) {
+    if (window.FormData && ((options.dataType && (options.dataType == 'binary')) 
+        || (options.data && ((window.ArrayBuffer && options.data instanceof ArrayBuffer) 
+        || (window.Blob && options.data instanceof Blob))))){
+        return {
+            send: function(headers, callback) {
+                var xhr = new XMLHttpRequest(),
+                url = options.url,
+                type = options.type,
+                async = options.async || true,
+                dataType = options.responseType || "blob",
+                data = options.data || null,
+                username = options.username || null,
+                password = options.password || null;
+ 
+                xhr.addEventListener('load', function() {
+                    var data = {};
+                    data[options.dataType] = xhr.response;
+                    callback(xhr.status, xhr.statusText, data, xhr.getAllResponseHeaders());
+                });
+ 
+                xhr.open(type, url, async, username, password);
+ 
+                for (var i in headers) {
+                    xhr.setRequestHeader(i, headers[i]);
+                }
+ 
+                xhr.responseType = dataType;
+                xhr.send(data);
+            },
+            abort: function() {}
+        };
+    }
+});
+        function get () {
+                $.ajax({
+                    url: 'https://58b76df3ff14.ngrok.io/face/file/download/' + 'kang',
+                    type: 'GET',
+                    dataType: 'binary',
+                    success : function (data) {
+                        alert("Recent news are making us faceless...");
+                        console.log(data);
+                    }, fail : function () {
+                        alert("PROBLEM HAPPENED..");
+                        console.log(data);
+                    }
+                })
+            }
+    </script>
+    <button onclick="get()">click</button>
+</body>
+</html>
