@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FACE MAKER RESULT</title>
     <link rel="stylesheet" href="../css/result.css">
     <link rel="stylesheet" href="../css/loader.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
@@ -70,14 +70,14 @@
                     <img class="face" src="../image/faces/neutral.png">
                     <h1>YOUR NEUTRAL FACE!</h1>
                 </div>
-                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+                <img class="photo neutral" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
             </div>
             <div class="swiper-slide">
                 <div>
                     <img class="face" src="../image/faces/happy.png">
                     <h1>YOUR HAPPY FACE^^</h1>
                 </div>
-                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+                <img class="photo happy" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
             </div>
             <div class="swiper-slide">
                 <div>
@@ -85,35 +85,35 @@
                     <h1>YOUR SAD FACE..</h1>
                 </div>
                 
-                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+                <img class="photo sad" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
             </div>
             <div class="swiper-slide">
                 <div>
                     <img class="face" src="../image/faces/angry.png">
                     <h1>YOUR ANGRY FACE!!</h1>
                 </div>                
-                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+                <img class="photo angry" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
             </div>
             <div class="swiper-slide">
                 <div>
                     <img class="face" src="../image/faces/contempt.png">
                     <h1>YOUR CONTEMPT FACE~</h1>
                 </div>
-                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+                <img class="photo contempt" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
             </div>
             <div class="swiper-slide">
                 <div>
                     <img class="face" src="../image/faces/surprised.png">
                     <h1>YOUR SURPRISED FACE!!</h1>
                 </div>                
-                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+                <img class="photo surprise" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
             </div>
             <div class="swiper-slide">
                 <div>
                     <img class="face" src="../image/faces/fear.png">
                     <h1>YOUR FEAR FACE...BOO!</h1>
                 </div>
-                <img class="photo" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
+                <img class="photo fear" src="https://www.realmadrid.com/img/vertical_380px/marcelo_380x501_20191221090925.jpg">
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -132,18 +132,75 @@
         });
 
         window.onload = function () {
+            
             /* loading window */
             $('.lds-facebook').hide();
             $('.layer').hide();
             /* loading window end */
         }
+
+        function changeImage() {
+            $('.photo.neutral').attr('src', 'https://41de83673ba8.ngrok.io/face/img/' + $.cookie('name') + '/1.jpg');
+            $('.photo.happy').attr('src', 'https://41de83673ba8.ngrok.io/face/img/' + $.cookie('name') + '/2.jpg');
+            $('.photo.sad').attr('src', 'https://41de83673ba8.ngrok.io/face/img/' + $.cookie('name') + '/3.jpg');
+            $('.photo.angry').attr('src', 'https://41de83673ba8.ngrok.io/face/img/' + $.cookie('name') + '/4.jpg');
+            $('.photo.contempt').attr('src', 'https://41de83673ba8.ngrok.io/face/img/' + $.cookie('name') + '/5.jpg');
+            $('.photo.surprise').attr('src', 'https://41de83673ba8.ngrok.io/face/img/' + $.cookie('name') + '/6.jpg');
+            $('.photo.fear').attr('src', 'https://41de83673ba8.ngrok.io/face/img/' + $.cookie('name') + '/7.jpg');
+        }
         
         function score () {
+            getScore();
             $('.score_modal').show();
             $('.layer').show();
         }
 
+        function getScore() {
+            var user_score = '';
+            var estimated_age = '';
+            var user_age = $.cookie('age');
+            var neutral_score = '';
+            var happy_score = '';
+            var sad_score = '';
+            var angry_score = '';
+            var contempt_score = '';
+            var surprise_score = '';
+            var fear_score = '';
+            $.ajax({
+                url: 'https://41de83673ba8.ngrok.io/face/score/' + $.cookie('name'),
+                contentType: "application/json",
+                dataType: 'json',
+                type: 'GET',
+                success : function (result) {
+                    console.log(result);
+                    estimated_age = result.age;
+                    neutral_score = result.neutral;
+                    angry_score = result.anger;
+                    contempt_score = result.contempt;
+                    fear_score = result.fear;
+                    happy_score = result.happiness;
+                    sad_score = result.sadness;
+                    surprise_score = result.surprise;
+                    $('#estimated_age').html(estimated_age);
+                    $('#user_age').html($.cookie('age'));
+                    $('#neutral_score').html(neutral_score);
+                    $('#happy_score').html(happy_score);
+                    $('#sad_score').html(sad_score);
+                    $('#angry_score').html(angry_score);
+                    $('#contempt_score').html(contempt_score);
+                    $('#surprise_score').html(surprise_score);
+                    $('#fear_score').html(fear_score);
+                    var score = (neutral_score + happy_score + sad_score +
+                    angry_score + contempt_score + surprise_score + fear_score) / 7;
+                    $('#user_score').html(score.toFixed(2));
+                }
+            })
+            
+
+        }
+
         $(document).ready(function () {
+            changeImage();
             $('#closeBtn').on('click', function () {
                 $('.score_modal').hide();
                 $('.layer').hide();

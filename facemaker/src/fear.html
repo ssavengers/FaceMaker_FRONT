@@ -40,6 +40,8 @@
         }
 
         function next() {
+            $('.layer').show();
+            $('.lds-facebook').show();
             uploadFile();
         }
 
@@ -50,7 +52,7 @@
             formData.append('mFile', $('#uploadImg')[0].files[0]);
 
             $.ajax({
-                url: 'https://58b76df3ff14.ngrok.io/face/file/upload/' + $.cookie('name') + '/7',
+                url: 'https://41de83673ba8.ngrok.io/face/file/upload/' + $.cookie('name') + '/7',
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -63,6 +65,8 @@
                     $('.layer').show();
                     alert("PROBLEM HAPPENED..")
                     $('.layer').hide();
+                }, complete : function() {
+                    window.open('result.html', '_self')
                 }
             })
         }

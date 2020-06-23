@@ -39,13 +39,12 @@
             }
             $.cookie('name', name);
             $.cookie('age', age);
-            alert(name);
-            alert(age);
-            console.log(name + age);
             $.ajax({
-                url: "https://3752707291dd.ngrok.io/face/login/" + name + "/" + age,
+                url: "https://41de83673ba8.ngrok.io/face/login/" + name + "/" + age,
+                data: '',
                 contentType: "application/json",
                 dataType: 'json',
+                type: 'post',
                 success: function(result){
                     alert("LETS GO");
                     window.open('neutral.html', '_self');
